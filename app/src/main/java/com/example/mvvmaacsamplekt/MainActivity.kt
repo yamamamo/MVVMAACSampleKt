@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.view.View
 import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.mvvmaacsamplekt.databinding.ActivityMainBinding
@@ -14,11 +15,15 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding //view binding
     private lateinit var profileAdapter : ProfileAdapter
 
+    private val model: MainViewModel by viewModels()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 //        setContentView(R.layout.activity_main)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+        binding.lifecycleOwner = this
+        binding.viewModel = model
         binding.activity = this@MainActivity
 
         setRcv()
@@ -47,18 +52,18 @@ class MainActivity : AppCompatActivity() {
     //observable
     fun setObserv(){
         var item : ObservableData = ObservableData()
-//        item.site = "Naver"
+        item.site = "Naver"
         binding.site = item
-        runOnUiThread(Runnable {
-            run {
-                item.site = "Google"
-            }
-        })
-//        Handler().postDelayed(Runnable {
+//        runOnUiThread(Runnable {
 //            run {
 //                item.site = "Google"
 //            }
-//        },3000)
+//        })
+        Handler().postDelayed(Runnable {
+            run {
+                item.site = "Google"
+            }
+        },3000)
     }
 
 }

@@ -10,6 +10,9 @@
         <variable
             name="site"
             type="com.example.mvvmaacsamplekt.ObservableData" />
+        <variable
+            name="viewModel"
+            type="com.example.mvvmaacsamplekt.MainViewModel" />
     </data>
 
     <androidx.appcompat.widget.LinearLayoutCompat
@@ -31,6 +34,35 @@
             android:layout_height="wrap_content"
             android:text="button"
             android:onClick="@{activity::btnClick}"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/fab_plus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="increase"
+                android:onClick="@{()->viewModel.increase()}"/>
+
+            <Button
+                android:id="@+id/fab_minus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="decrease"
+                android:onClick="@{()->viewModel.decrease()}"/>
+
+            <TextView
+                android:id="@+id/txt_result"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:text="@{Integer.toString(viewModel.count)}"/>
+
+        </LinearLayout>
+
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/mainRcv"
