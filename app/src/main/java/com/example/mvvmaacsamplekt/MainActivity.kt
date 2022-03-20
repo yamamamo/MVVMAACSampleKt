@@ -11,6 +11,8 @@ import com.example.mvvmaacsamplekt.databinding.ActivityMainBinding
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding //view binding
+    private lateinit var profileAdapter : ProfileAdapter
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,7 +29,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun setRcv(){
-        val profileAdapter = ProfileAdapter(this)
+        profileAdapter = ProfileAdapter(this)
         binding.mainRcv.layoutManager = LinearLayoutManager(this)
         binding.mainRcv.adapter = profileAdapter
         profileAdapter.data = listOf(
