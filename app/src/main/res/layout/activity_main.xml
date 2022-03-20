@@ -7,6 +7,9 @@
         <variable
             name="activity"
             type="com.example.mvvmaacsamplekt.MainActivity" />
+        <variable
+            name="site"
+            type="com.example.mvvmaacsamplekt.ObservableData" />
     </data>
 
     <androidx.appcompat.widget.LinearLayoutCompat
@@ -15,6 +18,12 @@
         android:orientation="vertical"
         tools:context=".MainActivity">
 
+        <TextView
+            android:id="@+id/siteName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{site.site}"
+            tools:text="siteName"/>
 
         <Button
             android:id="@+id/btnSample"

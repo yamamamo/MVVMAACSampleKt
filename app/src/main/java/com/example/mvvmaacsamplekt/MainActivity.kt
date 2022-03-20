@@ -2,6 +2,7 @@ package com.example.mvvmaacsamplekt
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
 import android.view.View
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
@@ -21,13 +22,17 @@ class MainActivity : AppCompatActivity() {
         binding.activity = this@MainActivity
 
         setRcv()
+
+//        setObserv()
     }
 
     //버튼 이벤트
     fun btnClick(view : View){
         Toast.makeText(this,"Button Click",Toast.LENGTH_SHORT).show()
+        setObserv()
     }
 
+    //리사이클러뷰
     fun setRcv(){
         profileAdapter = ProfileAdapter(this)
         binding.mainRcv.layoutManager = LinearLayoutManager(this)
@@ -37,6 +42,23 @@ class MainActivity : AppCompatActivity() {
             ProfileData(name = "Kim", age = 25)
         )
 //        profileAdapter.notifyDataSetChanged()
+    }
+
+    //observable
+    fun setObserv(){
+        var item : ObservableData = ObservableData()
+//        item.site = "Naver"
+        binding.site = item
+        runOnUiThread(Runnable {
+            run {
+                item.site = "Google"
+            }
+        })
+//        Handler().postDelayed(Runnable {
+//            run {
+//                item.site = "Google"
+//            }
+//        },3000)
     }
 
 }
