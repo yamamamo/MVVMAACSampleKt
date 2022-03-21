@@ -4,15 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="activity"
             type="com.example.mvvmaacsamplekt.MainActivity" />
+
         <variable
             name="site"
             type="com.example.mvvmaacsamplekt.ObservableData" />
+
         <variable
             name="viewModel"
             type="com.example.mvvmaacsamplekt.MainViewModel" />
+
         <variable
             name="profileViewModel"
             type="com.example.mvvmaacsamplekt.ProfileViewModel" />
@@ -29,14 +33,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@{site.site}"
-            tools:text="siteName"/>
+            tools:text="siteName" />
 
         <Button
             android:id="@+id/btnSample"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="button"
-            android:onClick="@{()->profileViewModel.add()}"/>
+            android:onClick="@{()->profileViewModel.add()}"
+            android:text="button" />
+<!--        android:onClick="@{activity::btnClick}"-->
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -47,22 +52,23 @@
                 android:id="@+id/fab_plus"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="increase"
-                android:onClick="@{()->viewModel.increase()}"/>
+                android:onClick="@{activity::btnClick}"
+                android:text="increase" />
 
+<!--                android:onClick="@{()->viewModel.increase()}"-->
             <Button
                 android:id="@+id/fab_minus"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="decrease"
-                android:onClick="@{()->viewModel.decrease()}"/>
+                android:onClick="@{()->viewModel.decrease()}"
+                android:text="decrease" />
 
             <TextView
                 android:id="@+id/txt_result"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="30dp"
-                android:text="@{Integer.toString(viewModel.count)}"/>
+                android:text="@{Integer.toString(viewModel.count)}" />
 
         </LinearLayout>
 

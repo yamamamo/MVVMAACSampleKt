@@ -38,14 +38,14 @@ class MainActivity : AppCompatActivity() {
 
         setRcv()
 
-//        setObserv()
+        setObserv()
     }
 
     //버튼 이벤트
     fun btnClick(view: View) {
         Toast.makeText(this, "Button Click", Toast.LENGTH_SHORT).show()
-        setObserv()
-//        profileAdapter.data.add(ProfileData(name = "강아지", age = 22))
+
+        profileModel.data.value?.add(ProfileData(name = "강아지", age = 22))
 //        profileAdapter.notifyDataSetChanged()
     }
 
@@ -54,23 +54,27 @@ class MainActivity : AppCompatActivity() {
         binding.mainRcv.layoutManager = LinearLayoutManager(this)
         profileAdapter = ProfileAdapter(this, profileModel.data)
         binding.mainRcv.adapter = profileAdapter
-        profileAdapter.data.value = mutableListOf(
-            ProfileData(name = "Kang", age = 26),
-            ProfileData(name = "Kim", age = 25)
-        )
+//        profileAdapter.data.value = mutableListOf(
+//            ProfileData(name = "Kang", age = 26),
+//            ProfileData(name = "Kim", age = 25)
+//        )
 //        profileAdapter.notifyDataSetChanged()
 
+        //observer 생성 - 데이터 변경 시 해야할 view 작업
         val dataObserver: Observer<MutableList<ProfileData>> =
-            Observer { livedata ->
-                data.value = livedata
+            Observer {
+                Log.d("TAG", "setRcv: "+it)
+                data.value = it
 //                profileAdapter.notifyDataSetChanged()
+//                (binding.mainRcv.adapter as ProfileAdapter).setContacts(livedata)
             }
 
-
-//        viewmodel.liveData.observe(this, dataObserver)
-        profileModel.data.observe(this, Observer<MutableList<ProfileData>>{profileData ->
-            profileAdapter.setContacts(profileData)
-        })
+        //observer 등록
+        profileModel.data.observe(this, dataObserver)
+//        profileModel.data.observe(this, Observer<MutableList<ProfileData>>{profileData ->
+////            profileAdapter.setContacts(profileData)
+//            (binding.mainRcv.adapter as ProfileAdapter).setContacts(profileData)
+//        })
     }
 
     //observable
