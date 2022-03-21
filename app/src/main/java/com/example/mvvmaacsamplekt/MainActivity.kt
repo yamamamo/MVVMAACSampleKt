@@ -41,12 +41,9 @@ class MainActivity : AppCompatActivity() {
         setObserv()
     }
 
-    //버튼 이벤트
+    //버튼 클릭 이벤트
     fun btnClick(view: View) {
         Toast.makeText(this, "Button Click", Toast.LENGTH_SHORT).show()
-
-        profileModel.data.value?.add(ProfileData(name = "야옹이", age = 11))
-//        profileAdapter.notifyDataSetChanged()
     }
 
     //리사이클러뷰
@@ -54,13 +51,10 @@ class MainActivity : AppCompatActivity() {
         binding.mainRcv.layoutManager = LinearLayoutManager(this)
         profileAdapter = ProfileAdapter(this, profileModel.data)
         binding.mainRcv.adapter = profileAdapter
-//        profileAdapter.data.value = mutableListOf(
-//            ProfileData(name = "Kang", age = 26),
-//            ProfileData(name = "Kim", age = 25)
-//        )
-//        profileAdapter.notifyDataSetChanged()
 
-        //ProfileViewModel observer 생성 - 데이터 변경 시 해야할 view 작업
+        /**
+         * ProfileViewModel observer 생성 - 데이터 변경 시 해야할 view 작업
+         * */
         val dataObserver: Observer<MutableList<ProfileData>> =
             Observer {
                 Log.d("TAG", "setRcv: "+it)

@@ -7,10 +7,11 @@ import androidx.lifecycle.MutableLiveData
 
 class ProfileViewModel(application: Application):AndroidViewModel(application) {
     val data = MutableLiveData<MutableList<ProfileData>>()
+
     init {
         data.value = mutableListOf(
-            ProfileData(name = "Kang", age = 26),
-            ProfileData(name = "Kim", age = 25)
+//            ProfileData(name = "Kang", age = 26),
+//            ProfileData(name = "Kim", age = 25)
         )
     }
    /**List 같은 타입은 call by reference로 값을 참조하기 때문에
@@ -27,6 +28,7 @@ class ProfileViewModel(application: Application):AndroidViewModel(application) {
     * */
     fun <T> MutableLiveData<T>.notifyObserver() { this.value = this.value }
 
+    //리사이클러뷰 아이템 추가
     fun add(){
         data.value?.add(ProfileData(name="강아지",age=22))
 //        Log.d("TAG", "add: ${data.value?.size}")
