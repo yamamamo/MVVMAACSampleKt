@@ -45,7 +45,7 @@ class MainActivity : AppCompatActivity() {
     fun btnClick(view: View) {
         Toast.makeText(this, "Button Click", Toast.LENGTH_SHORT).show()
 
-        profileModel.data.value?.add(ProfileData(name = "강아지", age = 22))
+        profileModel.data.value?.add(ProfileData(name = "야옹이", age = 11))
 //        profileAdapter.notifyDataSetChanged()
     }
 
@@ -60,24 +60,24 @@ class MainActivity : AppCompatActivity() {
 //        )
 //        profileAdapter.notifyDataSetChanged()
 
-        //observer 생성 - 데이터 변경 시 해야할 view 작업
+        //ProfileViewModel observer 생성 - 데이터 변경 시 해야할 view 작업
         val dataObserver: Observer<MutableList<ProfileData>> =
             Observer {
                 Log.d("TAG", "setRcv: "+it)
                 data.value = it
-//                profileAdapter.notifyDataSetChanged()
-//                (binding.mainRcv.adapter as ProfileAdapter).setContacts(livedata)
+                profileAdapter.notifyDataSetChanged()
             }
 
         //observer 등록
         profileModel.data.observe(this, dataObserver)
 //        profileModel.data.observe(this, Observer<MutableList<ProfileData>>{profileData ->
 ////            profileAdapter.setContacts(profileData)
-//            (binding.mainRcv.adapter as ProfileAdapter).setContacts(profileData)
+//            Log.d("TAG", "호잇")
+////            (binding.mainRcv.adapter as ProfileAdapter).setContacts(profileData)
 //        })
     }
 
-    //observable
+    //observable 테스트
     fun setObserv() {
         var item: ObservableData = ObservableData()
         item.site = "Naver"

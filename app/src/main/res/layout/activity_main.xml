@@ -40,7 +40,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="@{()->profileViewModel.add()}"
-            android:text="button" />
+            android:text="리사이클러뷰추가" />
 <!--        android:onClick="@{activity::btnClick}"-->
 
         <LinearLayout
@@ -52,10 +52,10 @@
                 android:id="@+id/fab_plus"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:onClick="@{activity::btnClick}"
+                android:onClick="@{()->viewModel.increase()}"
                 android:text="increase" />
+<!--                android:onClick="@{activity::btnClick}"-->
 
-<!--                android:onClick="@{()->viewModel.increase()}"-->
             <Button
                 android:id="@+id/fab_minus"
                 android:layout_width="wrap_content"
