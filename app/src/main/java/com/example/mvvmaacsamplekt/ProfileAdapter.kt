@@ -26,7 +26,6 @@ class ProfileAdapter(private val context: Context, var data : MutableLiveData<Mu
     }
 
     override fun getItemCount(): Int {
-//        Log.d("TAG", "getItemCount: ${data.value!!.size}")
         return data.value!!.size
     }
 

@@ -7,6 +7,8 @@ import androidx.lifecycle.MutableLiveData
 
 /** ViewModel 안에 LiveData 가 있는 구조
  *
+ *  ViewModel test
+ *
  * */
 class MainViewModel( application: Application) : AndroidViewModel(application) {
     // ViewModel()을 상속받을 경우
