@@ -35,6 +35,7 @@ class ProfileAdapter(private val context: Context, var data : MutableLiveData<Mu
         }
     }
 
+    //사용안함
     fun setContacts(data: MutableList<ProfileData>) {
         this.data.value = data
         notifyDataSetChanged()

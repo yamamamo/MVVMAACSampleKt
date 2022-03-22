@@ -4,7 +4,10 @@ import android.app.Application
 import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
-
+/**
+ *   리사이클러뷰 뷰모델
+ *
+ * */
 class ProfileViewModel(application: Application):AndroidViewModel(application) {
     val data = MutableLiveData<MutableList<ProfileData>>()
 
